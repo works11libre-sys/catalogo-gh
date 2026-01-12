@@ -3,109 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo | Streetwear CDMX</title>
+    <title>Store GH | Catálogo Streetwear</title>
     <style>
+        /* PALETA DE COLORES URBANA PREMIUM */
         :root {
             --negro: #0a0a0a;
             --blanco: #ffffff;
             --gris-oscuro: #161616;
-            --rojo: #ff4d4d;
-            --azul: #00a8ff;
-            --morado: #9d50bb;
+            --rojo: #e63946;
+            --azul: #0077b6;
+            --morado: #7b2cbf;
             --oro: #ffcc00;
-            --texto-gris: #b0b0b0;
+            --texto-gris: #a0a0a0;
         }
 
-        body { font-family: 'Helvetica Neue', sans-serif; margin: 0; background: var(--negro); color: var(--blanco); }
+        body { 
+            font-family: 'Arial Black', Gadget, sans-serif; 
+            margin: 0; 
+            background: var(--negro); 
+            color: var(--blanco); 
+        }
 
-        /* CABECERA Y PASOS */
-        header { padding: 40px 20px; text-align: center; border-bottom: 1px solid #222; }
-        header h1 { font-size: 2rem; letter-spacing: 3px; margin-bottom: 20px; }
-        
-        .instrucciones {
+        /* HEADER ESTILO URBANO */
+        header { 
+            padding: 50px 20px; 
+            text-align: center; 
+            background: linear-gradient(to bottom, #111, var(--negro));
+            border-bottom: 1px solid #222;
+        }
+
+        header h1 { 
+            font-size: 3rem; 
+            letter-spacing: -2px; 
+            margin: 0; 
+            font-style: italic;
+            text-transform: uppercase;
+        }
+
+        /* PASOS DE COMPRA */
+        .pasos-compra {
             background: var(--gris-oscuro);
-            padding: 15px;
-            border-radius: 10px;
-            max-width: 600px;
-            margin: 0 auto;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 15px;
             text-align: left;
-            font-size: 0.85rem;
-            border-left: 4px solid var(--rojo);
+            border: 1px solid #333;
         }
-        .instrucciones ol { margin: 5px 0; padding-left: 20px; color: var(--texto-gris); }
-        .instrucciones b { color: var(--blanco); }
+        .pasos-compra h3 { color: var(--rojo); margin-top: 0; font-size: 0.9rem; letter-spacing: 2px; }
+        .pasos-compra ol { margin: 0; padding-left: 20px; color: var(--texto-gris); font-family: sans-serif; font-size: 0.85rem; }
+        .pasos-compra li b { color: var(--blanco); }
 
-        /* GRID DE PRODUCTOS (2 COLUMNAS EN MÓVIL) */
+        /* GRID RESPONSIVO (2 columnas en cel, 4 en PC) */
         .container { 
             display: grid; 
-            grid-template-columns: repeat(2, 1fr); /* DOS COLUMNAS */
-            gap: 12px; 
-            padding: 15px; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 15px; 
+            padding: 20px; 
             max-width: 1200px; 
             margin: 0 auto; 
         }
 
-        /* DISEÑO DE COMPUTADORA (4 COLUMNAS) */
-        @media (min-width: 768px) {
-            .container { grid-template-columns: repeat(4, 1fr); gap: 25px; padding: 40px; }
+        @media (min-width: 900px) {
+            .container { grid-template-columns: repeat(4, 1fr); }
         }
 
+        /* TARJETA DE PRODUCTO */
         .producto { 
             background: var(--gris-oscuro); 
-            border-radius: 8px; 
+            border-radius: 12px; 
             overflow: hidden; 
+            transition: 0.3s;
             border: 1px solid #222;
             display: flex;
             flex-direction: column;
         }
 
+        .producto:hover { transform: translateY(-5px); border-color: var(--blanco); }
+
         .producto img { 
             width: 100%; 
-            aspect-ratio: 1 / 1; /* Fotos cuadradas para orden */
+            aspect-ratio: 1 / 1;
             object-fit: cover; 
+            background: #222;
         }
 
-        .info { padding: 12px; flex-grow: 1; display: flex; flex-direction: column; }
+        .info { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; font-family: sans-serif; }
         
-        .tag { font-size: 9px; text-transform: uppercase; padding: 3px 6px; border-radius: 3px; font-weight: bold; margin-bottom: 5px; display: inline-block; }
-        .tag-gorra { background: var(--rojo); }
-        .tag-playera { background: var(--azul); }
-        .tag-tenis { background: var(--morado); }
+        .tag { 
+            font-size: 9px; 
+            text-transform: uppercase; 
+            padding: 4px 8px; 
+            border-radius: 4px; 
+            font-weight: bold; 
+            margin-bottom: 8px;
+            display: inline-block;
+            width: fit-content;
+        }
+        .tag-gorra { background: var(--rojo); color: white; }
+        .tag-playera { background: var(--azul); color: white; }
+        .tag-tenis { background: var(--morado); color: white; }
 
-        h2 { font-size: 0.9rem; margin: 5px 0; height: 35px; overflow: hidden; }
-        
-        .estrellas { color: var(--oro); font-size: 10px; margin-bottom: 8px; }
+        .estrellas { color: var(--oro); font-size: 10px; margin-bottom: 5px; }
 
-        .precio { color: var(--blanco); font-size: 1.1rem; font-weight: bold; margin-bottom: 12px; }
+        h2 { font-size: 1rem; margin: 5px 0; text-transform: uppercase; letter-spacing: 1px; }
+        .precio { color: var(--blanco); font-size: 1.3rem; font-weight: bold; margin-bottom: 15px; }
 
         .btn-comprar { 
             background: var(--blanco); 
             color: var(--negro); 
-            padding: 10px 5px; 
+            padding: 10px; 
             text-decoration: none; 
             font-weight: bold; 
-            font-size: 0.75rem;
+            display: block; 
             text-align: center;
-            border-radius: 4px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            transition: 0.3s;
             text-transform: uppercase;
         }
 
-        /* FOOTER E ENVÍOS */
-        footer { padding: 50px 20px; text-align: center; background: #050505; border-top: 1px solid #222; }
-        .envios-info { margin-bottom: 20px; font-size: 0.9rem; color: var(--texto-gris); }
-        .logos-envio { opacity: 0.7; font-weight: bold; letter-spacing: 2px; font-size: 0.8rem; color: var(--blanco); }
+        .btn-comprar:hover { background: #ccc; }
+
+        /* FOOTER Y ENVIOS */
+        footer { 
+            padding: 60px 20px; 
+            text-align: center; 
+            color: var(--texto-gris); 
+            font-size: 0.8rem; 
+            background: #050505;
+            font-family: sans-serif;
+            border-top: 1px solid #222;
+        }
+        .envios-box { margin-bottom: 20px; line-height: 1.6; }
+        .envios-box b { color: var(--blanco); }
+        .paqueterias { letter-spacing: 3px; font-weight: bold; margin-top: 10px; color: var(--blanco); }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>MI MARCA</h1>
-    <div class="instrucciones">
-        <b>¿CÓMO COMPRAR?</b>
+    <h1>STORE GH</h1>
+    <div class="pasos-compra">
+        <h3>PASOS PARA TU PEDIDO:</h3>
         <ol>
-            <li>Elige tus prendas favoritas del catálogo.</li>
-            <li>Dale clic al botón <b>"Comprar por WhatsApp"</b>.</li>
-            <li>Envíanos la <b>imagen o nombre</b> del producto para atenderte.</li>
+            <li>Elige tu prenda, gorra o tenis favorito.</li>
+            <li>Da clic en el botón <b>"Comprar por WhatsApp"</b>.</li>
+            <li><b>Envía la captura de pantalla</b> del producto para confirmar disponibilidad.</li>
         </ol>
     </div>
 </header>
@@ -113,38 +157,58 @@
 <div class="container">
 
     <div class="producto">
-        <img src="URL_DE_TU_FOTO_AQUI" alt="Gorra">
+        <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=500" alt="Gorra">
         <div class="info">
             <span class="tag tag-gorra">Gorra</span>
-            <h2>Gorra Trucker "Street"</h2>
             <div class="estrellas">★★★★★</div>
-            <p class="precio">$250</p>
-            <a href="https://wa.me/TUNUMERO?text=Hola! Me interesa esta Gorra" class="btn-comprar">WhatsApp</a>
+            <h2>Snapback Black GH</h2>
+            <p class="precio">$250.00</p>
+            <a href="https://wa.me/TUNUMERO?text=Hola Store GH, me interesa la Gorra Snapback Black" class="btn-comprar">WhatsApp</a>
         </div>
     </div>
 
     <div class="producto">
-        <img src="URL_DE_TU_FOTO_AQUI" alt="Playera">
+        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=500" alt="Playera">
         <div class="info">
             <span class="tag tag-playera">Playera</span>
-            <h2>Oversize Acid Wash</h2>
             <div class="estrellas">★★★★★</div>
-            <p class="precio">$380</p>
-            <a href="https://wa.me/TUNUMERO?text=Hola! Me interesa esta Playera" class="btn-comprar">WhatsApp</a>
+            <h2>Oversize Street GH</h2>
+            <p class="precio">$350.00</p>
+            <a href="https://wa.me/TUNUMERO?text=Hola Store GH, me interesa la Playera Oversize" class="btn-comprar">WhatsApp</a>
         </div>
     </div>
 
+    <div class="producto">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=500" alt="Tenis">
+        <div class="info">
+            <span class="tag tag-tenis">Tenis</span>
+            <div class="estrellas">★★★★★</div>
+            <h2>Urban Runner GH</h2>
+            <p class="precio">$1,200.00</p>
+            <a href="https://wa.me/TUNUMERO?text=Hola Store GH, me interesa los Tenis Urban Runner" class="btn-comprar">WhatsApp</a>
+        </div>
     </div>
 
+    <div class="producto">
+        <img src="https://images.unsplash.com/photo-1572307480813-ceb0e59d8325?q=80&w=500" alt="Gorra">
+        <div class="info">
+            <span class="tag tag-gorra">Gorra</span>
+            <div class="estrellas">★★★★★</div>
+            <h2>Beanie Grey GH</h2>
+            <p class="precio">$200.00</p>
+            <a href="https://wa.me/TUNUMERO?text=Hola Store GH, me interesa el Beanie Grey" class="btn-comprar">WhatsApp</a>
+        </div>
+    </div>
+
+</div>
+
 <footer>
-    <div class="envios-info">
-        📍 Entregas personales en toda la <b>CDMX</b>.<br>
-        📦 Envíos nacionales a todo México por:
+    <div class="envios-box">
+        📍 Entregas personales en toda la <b>Ciudad de México</b>.<br>
+        📦 Envíos nacionales por las mejores paqueterías:
+        <div class="paqueterias">ESTAFETA | CORREOS MÉXICO | DHL</div>
     </div>
-    <div class="logos-envio">
-        ESTAFETA | CORREOS MÉXICO | DHL
-    </div>
-    <p style="margin-top: 30px; font-size: 0.7rem;">© 2024 Mi Marca Urbana</p>
+    <p>© 2026 Store GH - Streetwear Culture</p>
 </footer>
 
 </body>
