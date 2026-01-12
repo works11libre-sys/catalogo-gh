@@ -3,141 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo | Streetwear</title>
+    <title>Catálogo | Streetwear CDMX</title>
     <style>
-        /* PALETA DE COLORES URBANA */
         :root {
             --negro: #0a0a0a;
             --blanco: #ffffff;
-            --gris-oscuro: #1a1a1a;
-            --rojo: #e63946;
-            --azul: #0077b6;
-            --morado: #7b2cbf;
-            --texto-gris: #a0a0a0;
+            --gris-oscuro: #161616;
+            --rojo: #ff4d4d;
+            --azul: #00a8ff;
+            --morado: #9d50bb;
+            --oro: #ffcc00;
+            --texto-gris: #b0b0b0;
         }
 
-        body { 
-            font-family: 'Segoe UI', Roboto, sans-serif; 
-            margin: 0; 
-            background: var(--negro); 
-            color: var(--blanco); 
+        body { font-family: 'Helvetica Neue', sans-serif; margin: 0; background: var(--negro); color: var(--blanco); }
+
+        /* CABECERA Y PASOS */
+        header { padding: 40px 20px; text-align: center; border-bottom: 1px solid #222; }
+        header h1 { font-size: 2rem; letter-spacing: 3px; margin-bottom: 20px; }
+        
+        .instrucciones {
+            background: var(--gris-oscuro);
+            padding: 15px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+            font-size: 0.85rem;
+            border-left: 4px solid var(--rojo);
         }
+        .instrucciones ol { margin: 5px 0; padding-left: 20px; color: var(--texto-gris); }
+        .instrucciones b { color: var(--blanco); }
 
-        header { 
-            padding: 60px 20px; 
-            text-align: center; 
-            background: linear-gradient(to bottom, #111, var(--negro));
-        }
-
-        header h1 { font-size: 2.5rem; letter-spacing: 5px; margin: 0; }
-        header p { color: var(--texto-gris); text-transform: uppercase; font-size: 0.9rem; margin-top: 10px; }
-
+        /* GRID DE PRODUCTOS (2 COLUMNAS EN MÓVIL) */
         .container { 
             display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
-            gap: 25px; 
-            padding: 40px 20px; 
+            grid-template-columns: repeat(2, 1fr); /* DOS COLUMNAS */
+            gap: 12px; 
+            padding: 15px; 
             max-width: 1200px; 
             margin: 0 auto; 
         }
 
-        /* TARJETA DE PRODUCTO */
-        .producto { 
-            background: var(--gris-oscuro); 
-            border-radius: 12px; 
-            overflow: hidden; 
-            transition: 0.3s;
-            border: 1px solid #333;
+        /* DISEÑO DE COMPUTADORA (4 COLUMNAS) */
+        @media (min-width: 768px) {
+            .container { grid-template-columns: repeat(4, 1fr); gap: 25px; padding: 40px; }
         }
 
-        .producto:hover { transform: translateY(-10px); border-color: var(--blanco); }
+        .producto { 
+            background: var(--gris-oscuro); 
+            border-radius: 8px; 
+            overflow: hidden; 
+            border: 1px solid #222;
+            display: flex;
+            flex-direction: column;
+        }
 
         .producto img { 
             width: 100%; 
-            height: 350px; 
+            aspect-ratio: 1 / 1; /* Fotos cuadradas para orden */
             object-fit: cover; 
-            background: #222;
         }
 
-        .info { padding: 20px; text-align: left; }
+        .info { padding: 12px; flex-grow: 1; display: flex; flex-direction: column; }
         
-        /* ETIQUETAS DE COLORES SEGÚN CATEGORÍA */
-        .tag { 
-            font-size: 10px; 
-            text-transform: uppercase; 
-            padding: 4px 8px; 
-            border-radius: 4px; 
-            font-weight: bold; 
-            margin-bottom: 10px;
-            display: inline-block;
-        }
-        .tag-gorra { background: var(--rojo); color: white; }
-        .tag-playera { background: var(--azul); color: white; }
-        .tag-tenis { background: var(--morado); color: white; }
+        .tag { font-size: 9px; text-transform: uppercase; padding: 3px 6px; border-radius: 3px; font-weight: bold; margin-bottom: 5px; display: inline-block; }
+        .tag-gorra { background: var(--rojo); }
+        .tag-playera { background: var(--azul); }
+        .tag-tenis { background: var(--morado); }
 
-        h2 { font-size: 1.3rem; margin: 10px 0; }
-        .precio { color: var(--blanco); font-size: 1.5rem; font-weight: bold; margin-bottom: 20px; }
+        h2 { font-size: 0.9rem; margin: 5px 0; height: 35px; overflow: hidden; }
+        
+        .estrellas { color: var(--oro); font-size: 10px; margin-bottom: 8px; }
+
+        .precio { color: var(--blanco); font-size: 1.1rem; font-weight: bold; margin-bottom: 12px; }
 
         .btn-comprar { 
             background: var(--blanco); 
             color: var(--negro); 
-            padding: 12px; 
+            padding: 10px 5px; 
             text-decoration: none; 
             font-weight: bold; 
-            display: block; 
+            font-size: 0.75rem;
             text-align: center;
-            border-radius: 6px;
-            transition: 0.3s;
+            border-radius: 4px;
+            text-transform: uppercase;
         }
 
-        .btn-comprar:hover { background: #ccc; }
-
-        footer { padding: 40px; text-align: center; color: var(--texto-gris); font-size: 0.8rem; }
+        /* FOOTER E ENVÍOS */
+        footer { padding: 50px 20px; text-align: center; background: #050505; border-top: 1px solid #222; }
+        .envios-info { margin-bottom: 20px; font-size: 0.9rem; color: var(--texto-gris); }
+        .logos-envio { opacity: 0.7; font-weight: bold; letter-spacing: 2px; font-size: 0.8rem; color: var(--blanco); }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Store GH</h1>
-    <p>Gorras • Playeras • Tenis</p>
+    <h1>MI MARCA</h1>
+    <div class="instrucciones">
+        <b>¿CÓMO COMPRAR?</b>
+        <ol>
+            <li>Elige tus prendas favoritas del catálogo.</li>
+            <li>Dale clic al botón <b>"Comprar por WhatsApp"</b>.</li>
+            <li>Envíanos la <b>imagen o nombre</b> del producto para atenderte.</li>
+        </ol>
+    </div>
 </header>
 
 <div class="container">
 
     <div class="producto">
-        <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=500" alt="Gorra">
+        <img src="URL_DE_TU_FOTO_AQUI" alt="Gorra">
         <div class="info">
             <span class="tag tag-gorra">Gorra</span>
-            <h2>Snapback Black Edition</h2>
-            <p class="precio">$250.00</p>
-            <a href="https://wa.me/525587708222text=Hola, me interesa la Gorra Snapback" class="btn-comprar">COMPRAR POR WHATSAPP</a>
+            <h2>Gorra Trucker "Street"</h2>
+            <div class="estrellas">★★★★★</div>
+            <p class="precio">$250</p>
+            <a href="https://wa.me/TUNUMERO?text=Hola! Me interesa esta Gorra" class="btn-comprar">WhatsApp</a>
         </div>
     </div>
 
     <div class="producto">
-        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=500" alt="Playera">
+        <img src="URL_DE_TU_FOTO_AQUI" alt="Playera">
         <div class="info">
             <span class="tag tag-playera">Playera</span>
-            <h2>Oversize Urban Blue</h2>
-            <p class="precio">$350.00</p>
-            <a href="https://wa.me/525587708222text=Hola, me interesa la Playera Oversize" class="btn-comprar">COMPRAR POR WHATSAPP</a>
+            <h2>Oversize Acid Wash</h2>
+            <div class="estrellas">★★★★★</div>
+            <p class="precio">$380</p>
+            <a href="https://wa.me/TUNUMERO?text=Hola! Me interesa esta Playera" class="btn-comprar">WhatsApp</a>
         </div>
     </div>
 
-    <div class="producto">
-        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=500" alt="Tenis">
-        <div class="info">
-            <span class="tag tag-tenis">Tenis</span>
-            <h2>Midnight Sneakers</h2>
-            <p class="precio">$1,200.00</p>
-            <a href="https://wa.me/525587708222text=Hola, me interesa los Tenis Midnight" class="btn-comprar">COMPRAR POR WHATSAPP</a>
-        </div>
     </div>
-
-</div>
 
 <footer>
-    © 2024 Mi Marca Urbana - Todos los derechos reservados.
+    <div class="envios-info">
+        📍 Entregas personales en toda la <b>CDMX</b>.<br>
+        📦 Envíos nacionales a todo México por:
+    </div>
+    <div class="logos-envio">
+        ESTAFETA | CORREOS MÉXICO | DHL
+    </div>
+    <p style="margin-top: 30px; font-size: 0.7rem;">© 2024 Mi Marca Urbana</p>
 </footer>
 
 </body>
